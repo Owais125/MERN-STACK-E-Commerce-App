@@ -15,7 +15,9 @@ const app = express()
 dotenv.config()
 // app.use(cors())
 app.use(cors({
-    origin: 'https://e-commerceapp-6cfbd.web.app' // Your frontend URL
+    origin: 'https://e-commerceapp-6cfbd.web.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json())
 app.use(morgan('dev'))
