@@ -13,7 +13,10 @@ import cors from 'cors'
 
 const app = express()
 dotenv.config()
-app.use(cors())
+// app.use(cors())
+app.use(cors({
+    origin: 'https://e-commerceapp-6cfbd.web.app' // Your frontend URL
+}));
 app.use(express.json())
 app.use(morgan('dev'))
 // app.use(express.static(path.join(__dirname,'./client/build')))
