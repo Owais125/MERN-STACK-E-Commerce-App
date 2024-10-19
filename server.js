@@ -7,35 +7,35 @@ import authRoutes from './routes/authRoute.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoute.js'
 import cors from 'cors'
-// import path from 'path'
-// import { fileURLToPath } from 'url'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 
 const app = express()
 dotenv.config()
-// app.use(cors())
-app.use(cors({
-    origin: 'https://e-commerceapp-6cfbd.web.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors())
+// app.use(cors({
+//     origin: 'https://e-commerceapp-6cfbd.web.app',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type', 'Authorization']
+// }));
 app.use(express.json())
 app.use(morgan('dev'))
-// app.use(express.static(path.join(__dirname,'./client/build')))
+app.use(express.static(path.join(__dirname,'./client/build')))
 
 
-// const __filename = fileURLToPath(import.meta.url)
+const __filename = fileURLToPath(import.meta.url)
 
-// const __dirname = path.dirname(__filename)
+const __dirname = path.dirname(__filename)
 
 
 app.get('/',(req,res)=>{
     res.send("<h1>Welcome to E Commerce App</h1>")
 })
 
-// app.use('*',function(req,res){
-// res.sendFile(path.join(__dirname,'./client/build/index.html'))
-// })
+app.use('*',function(req,res){
+res.sendFile(path.join(__dirname,'./client/build/index.html'))
+})
 
 
 
